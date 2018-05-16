@@ -91,8 +91,6 @@ CREATE TABLE `t_metas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-
-
 DROP TABLE IF EXISTS `t_options`;
 
 CREATE TABLE `t_options` (
@@ -132,4 +130,4 @@ CREATE TABLE `t_users` (
 
 INSERT INTO `t_users` (`uid`, `username`, `password`, `email`, `home_url`, `screen_name`, `created`, `activated`, `logged`, `group_name`)
 VALUES
-	(1, 'admin', 'a66abb5684c45962d887564f08346e8d', 'bootweb@qq.com', NULL, 'admin', 1490756162, 0, 0, 'visitor');
+	(1, 'admin', 'ecfa432505189a58be30f49f32b44026', 'bootweb@qq.com', NULL, 'admin', 1490756162, 0, 0, 'visitor');
