@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2018/1/21 11:25
  */
 public abstract class AbstractController {
-    public static String THEME = "themes/luangeng";
+    public static String THEME = "themes/simple";
 
     protected MapCache cache = MapCache.single();
 

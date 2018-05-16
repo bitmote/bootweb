@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="import com.luangeng.bootweb.dao.ContentVoMapper">
-  <resultMap id="BaseResultMap" type="import com.luangeng.bootweb.modal.vo.ContentVo">
+<mapper namespace="com.luangeng.bootweb.dao.ContentVoMapper">
+  <resultMap id="BaseResultMap" type="com.luangeng.bootweb.modal.vo.ContentVo">
     <id column="cid" jdbcType="INTEGER" property="cid" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="slug" jdbcType="VARCHAR" property="slug" />
@@ -19,7 +19,7 @@
     <result column="allow_feed" jdbcType="BIT" property="allowFeed" />
     <result column="thumbImg" jdbcType="VARCHAR" property="thumbimg" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="import com.luangeng.bootweb.modal.vo.ContentVo">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.luangeng.bootweb.modal.vo.ContentVo">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -87,7 +87,7 @@
   <sql id="Blob_Column_List">
     content
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="import com.luangeng.bootweb.modal.vo.ContentVoExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="com.luangeng.bootweb.modal.vo.ContentVoExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -103,7 +103,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="import com.luangeng.bootweb.modal.vo.ContentVoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.luangeng.bootweb.modal.vo.ContentVoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -129,13 +129,13 @@
     delete from t_contents
     where cid = #{cid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="import com.luangeng.bootweb.modal.vo.ContentVoExample">
+  <delete id="deleteByExample" parameterType="com.luangeng.bootweb.modal.vo.ContentVoExample">
     delete from t_contents
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="import com.luangeng.bootweb.modal.vo.ContentVo" useGeneratedKeys="true" keyProperty="cid">
+  <insert id="insert" parameterType="com.luangeng.bootweb.modal.vo.ContentVo" useGeneratedKeys="true" keyProperty="cid">
     insert into t_contents (cid, title, slug,
     created, modified, author_id,
     type, status, tags,
@@ -149,7 +149,7 @@
     #{allowComment,jdbcType=BIT}, #{allowPing,jdbcType=BIT}, #{allowFeed,jdbcType=BIT},
     #{thumbimg,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="import com.luangeng.bootweb.modal.vo.ContentVo" useGeneratedKeys="true" keyProperty="cid">
+  <insert id="insertSelective" parameterType="com.luangeng.bootweb.modal.vo.ContentVo" useGeneratedKeys="true" keyProperty="cid">
     insert into t_contents
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="cid != null">
@@ -258,7 +258,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="import com.luangeng.bootweb.modal.vo.ContentVoExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.luangeng.bootweb.modal.vo.ContentVoExample" resultType="java.lang.Long">
     select count(*) from t_contents
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -368,7 +368,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="import com.luangeng.bootweb.modal.vo.ContentVo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.luangeng.bootweb.modal.vo.ContentVo">
     update t_contents
     <set>
       <if test="title != null">
@@ -422,7 +422,7 @@
     </set>
     where cid = #{cid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="import com.luangeng.bootweb.modal.vo.ContentVo">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.luangeng.bootweb.modal.vo.ContentVo">
     update t_contents
     set title = #{title,jdbcType=VARCHAR},
     slug = #{slug,jdbcType=VARCHAR},
@@ -442,7 +442,7 @@
     content = #{content,jdbcType=LONGVARCHAR}
     where cid = #{cid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="import com.luangeng.bootweb.modal.vo.ContentVo">
+  <update id="updateByPrimaryKey" parameterType="com.luangeng.bootweb.modal.vo.ContentVo">
     update t_contents
     set title = #{title,jdbcType=VARCHAR},
     slug = #{slug,jdbcType=VARCHAR},
@@ -463,7 +463,7 @@
   </update>
 
 
-  <resultMap id="archiveBoMap" type="import com.luangeng.bootweb.modal.bo.ArchiveBo">
+  <resultMap id="archiveBoMap" type="com.luangeng.bootweb.modal.bo.ArchiveBo">
     <id column="date" property="date"/>
     <result column="count" property="count"/>
   </resultMap>

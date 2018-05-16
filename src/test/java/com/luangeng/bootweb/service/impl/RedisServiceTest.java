@@ -59,7 +59,7 @@ public class RedisServiceTest {
         List<MetaDto> categories = metaService.getMetaList(Types.CATEGORY.getType(), null, WebConst.MAX_POSTS);
         context.setVariable("categories", categories);
         context.setVariable("articles", articles);
-        String html = templateEngine.process("themes/luangeng/index",context);
+        String html = templateEngine.process("themes/simple/index",context);
         System.out.println(html);
     }
 }

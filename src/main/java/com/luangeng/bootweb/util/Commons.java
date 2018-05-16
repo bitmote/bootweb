@@ -30,7 +30,7 @@ public class Commons {
 
      private static ISiteService siteService;
 
-     public static String THEME = "themes/luangeng";
+     public static String THEME = "themes/simple";
 
      private static final List EMPTY = new ArrayList(0);
 

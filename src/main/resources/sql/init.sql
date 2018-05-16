@@ -1,8 +1,8 @@
 
 -- 创建数据库
-create database `jantent` default character set utf8 collate utf8_general_ci;
+create database `bootweb` default character set utf8 collate utf8_general_ci;
 
-use jantent;
+use bootweb;
 
 DROP TABLE IF EXISTS `t_logs`;
 
@@ -132,4 +132,4 @@ CREATE TABLE `t_users` (
 
 INSERT INTO `t_users` (`uid`, `username`, `password`, `email`, `home_url`, `screen_name`, `created`, `activated`, `logged`, `group_name`)
 VALUES
-	(1, 'admin', 'a66abb5684c45962d887564f08346e8d', 'jantent@qq.com', NULL, 'admin', 1490756162, 0, 0, 'visitor');
+	(1, 'admin', 'a66abb5684c45962d887564f08346e8d', 'bootweb@qq.com', NULL, 'admin', 1490756162, 0, 0, 'visitor');

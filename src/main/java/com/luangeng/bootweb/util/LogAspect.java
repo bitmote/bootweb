@@ -23,7 +23,7 @@ public class LogAspect {
 
     private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
-    @Pointcut("execution(public * com.luangeng.bootweb.controller..*.*(..))")
+    @Pointcut("execution(public * com.simple.bootweb.controller..*.*(..))")
     public void webLog() {
     }
 
