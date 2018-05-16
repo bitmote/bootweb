@@ -1,0 +1,17 @@
+*.class
+*.log
+*.tmp
+*.jar
+*.iml
+*.ipr
+*.iws
+
+log/
+logs/
+out/
+target/
+temp/
+.idea/
+
+data.*
+
