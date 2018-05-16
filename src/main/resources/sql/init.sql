@@ -99,6 +99,12 @@ CREATE TABLE `t_options` (
   `description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+insert into t_options values ('site_title','','');
+insert into t_options values ('site_description','','');
+insert into t_options values ('site_record','','');
+insert into t_options values ('site_theme','default','');
+insert into t_options values ('site_block_ips','','');
+
 
 
 DROP TABLE IF EXISTS `t_relationships`;

@@ -98,7 +98,7 @@
 
                         <form id="articleForm">
                             <input type="hidden" name="categories" id="categories"/>
-                            <input  name="cid"
+                            <input type="hidden" name="cid"
                                    th:value="${contents!=null and contents.cid!=null}?${contents.cid}: ''" id="cid"/>
                             <input type="hidden" name="status"
                                    th:value="${contents!=null and contents.status !=null}?${contents.status}: 'publish'"
