@@ -122,8 +122,7 @@ CREATE TABLE `t_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `t_users` (`uid`, `username`, `password`, `email`, `home_url`, `screen_name`, `created`, `activated`, `logged`, `group_name`)
-VALUES
-	(1, 'admin', 'ecfa432505189a58be30f49f32b44026', '1057935399@qq.com', NULL, 'admin', 1490756162, 0, 0, 'visitor');
+VALUES (1, 'admin', 'ecfa432505189a58be30f49f32b44026', '1057935399@qq.com', NULL, 'admin', 1490756162, 0, 0, 'visitor');
 
 insert into t_options values ('site_title','','');
 insert into t_options values ('site_description','','');
@@ -132,3 +131,4 @@ insert into t_options values ('site_theme','default','');
 insert into t_options values ('site_block_ips','','');
 
 insert into t_metas (name, type, sort, parent) values('news', 'category', 0,0);
+insert into t_metas (name, type, sort, parent) values('文章', 'category', 0,0);
