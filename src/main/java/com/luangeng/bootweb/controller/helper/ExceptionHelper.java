@@ -1,12 +1,11 @@
 package com.luangeng.bootweb.controller.helper;
 
 import com.luangeng.bootweb.exception.TipException;
-import org.slf4j.Logger;
-import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.bo.RestResponseBo;
+import org.slf4j.Logger;
 
 /**
- * @author janti
+ * @author
  */
 public class ExceptionHelper {
     /**

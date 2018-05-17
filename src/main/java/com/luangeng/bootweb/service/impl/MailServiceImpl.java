@@ -9,8 +9,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.Context;
-import com.luangeng.bootweb.service.IMailService;
 
 import javax.annotation.Resource;
 import javax.mail.MessagingException;
@@ -18,7 +16,7 @@ import javax.mail.internet.MimeMessage;
 import java.io.File;
 
 /**
- * @author janti
+ * @author
  * @date 2018/5/3 22:07
  */
 @Component
