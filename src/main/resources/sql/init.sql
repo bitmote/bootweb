@@ -5,7 +5,6 @@ create database `bootweb` default character set utf8 collate utf8_general_ci;
 use bootweb;
 
 DROP TABLE IF EXISTS `t_logs`;
-
 CREATE TABLE `t_logs` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT ,
   `action` varchar(100) DEFAULT NULL ,
@@ -17,7 +16,6 @@ CREATE TABLE `t_logs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `t_attach`;
-
 CREATE TABLE `t_attach` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `fname` varchar(100) NOT NULL DEFAULT '',
@@ -29,7 +27,6 @@ CREATE TABLE `t_attach` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `t_comments`;
-
 CREATE TABLE `t_comments` (
   `coid` int(10) unsigned NOT NULL AUTO_INCREMENT ,
   `cid` int(10) unsigned DEFAULT '0' ,
@@ -51,7 +48,6 @@ CREATE TABLE `t_comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `t_contents`;
-
 CREATE TABLE `t_contents` (
   `cid` int(10) unsigned NOT NULL AUTO_INCREMENT ,
   `title` varchar(200) DEFAULT NULL ,
@@ -77,7 +73,6 @@ CREATE TABLE `t_contents` (
 
 
 DROP TABLE IF EXISTS `t_metas`;
-
 CREATE TABLE `t_metas` (
   `mid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(200) DEFAULT NULL,
@@ -92,23 +87,16 @@ CREATE TABLE `t_metas` (
 
 
 DROP TABLE IF EXISTS `t_options`;
-
 CREATE TABLE `t_options` (
   `name` varchar(32) NOT NULL DEFAULT '',
   `value` varchar(1000) DEFAULT '',
   `description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-insert into t_options values ('site_title','','');
-insert into t_options values ('site_description','','');
-insert into t_options values ('site_record','','');
-insert into t_options values ('site_theme','default','');
-insert into t_options values ('site_block_ips','','');
 
 
 
 DROP TABLE IF EXISTS `t_relationships`;
-
 CREATE TABLE `t_relationships` (
   `cid` int(10) unsigned NOT NULL,
   `mid` int(10) unsigned NOT NULL,
@@ -117,7 +105,6 @@ CREATE TABLE `t_relationships` (
 
 
 DROP TABLE IF EXISTS `t_users`;
-
 CREATE TABLE `t_users` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(32) DEFAULT NULL,
@@ -136,4 +123,12 @@ CREATE TABLE `t_users` (
 
 INSERT INTO `t_users` (`uid`, `username`, `password`, `email`, `home_url`, `screen_name`, `created`, `activated`, `logged`, `group_name`)
 VALUES
-	(1, 'admin', 'ecfa432505189a58be30f49f32b44026', 'bootweb@qq.com', NULL, 'admin', 1490756162, 0, 0, 'visitor');
+	(1, 'admin', 'ecfa432505189a58be30f49f32b44026', '1057935399@qq.com', NULL, 'admin', 1490756162, 0, 0, 'visitor');
+
+insert into t_options values ('site_title','','');
+insert into t_options values ('site_description','','');
+insert into t_options values ('site_record','','');
+insert into t_options values ('site_theme','default','');
+insert into t_options values ('site_block_ips','','');
+
+insert into t_metas (name, type, sort, parent) values('news', 'category', 0,0);

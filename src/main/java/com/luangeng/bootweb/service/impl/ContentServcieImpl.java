@@ -107,7 +107,12 @@ public class ContentServcieImpl implements IContentService {
     public ContentVo getContents(String id) {
         // 先从redis中读取文章信息
         String contentKey = RedisKeyUtil.getKey(ContentKey.TABLE_NAME, ContentKey.MAJOR_KEY, id);
-        ContentVo contentVo = (ContentVo) valueOperations.get(contentKey);
+        ContentVo contentVo = null;
+        try {
+            contentVo = (ContentVo) valueOperations.get(contentKey);
+        } catch (Exception e) {
+
+        }
         if (contentVo == null){
             if (StringUtils.isNotBlank(id)) {
                 if (Tools.isNumber(id)) {
