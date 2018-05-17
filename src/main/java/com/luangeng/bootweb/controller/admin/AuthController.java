@@ -34,6 +34,7 @@ import java.io.IOException;
 @RequestMapping("/admin")
 @Transactional(rollbackFor = TipException.class)
 public class AuthController extends AbstractController {
+
     private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     @Autowired

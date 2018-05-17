@@ -1,11 +1,9 @@
 package com.luangeng.bootweb;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.luangeng.bootweb.config.HttpPortCfg;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -22,9 +20,6 @@ import javax.sql.DataSource;
 @EnableScheduling
 @MapperScan("com.luangeng.bootweb.dao")
 public class StartApplication {
-
-    @Autowired
-    private HttpPortCfg httpPortCfg;
 
     public static void main(String[] args) throws Exception{
         SpringApplication app = new SpringApplication(StartApplication.class);

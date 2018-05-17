@@ -24,12 +24,3 @@ pagehelper:
   support-methods-arguments: true
   params: count=countSql
 
-httpportcfg:
-  http_port: 8080
-  https_port: 8443
-
-# Nettyserver 配置
-nettyserver:
-  serviceIp: 0.0.0.0
-  servicePort: 3460
-

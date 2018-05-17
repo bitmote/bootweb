@@ -14,8 +14,8 @@ import java.util.Set;
  */
 @Component
 public class WebConst {
-    public static Map<String, String> initConfig = new HashMap<>();
 
+    public static Map<String, String> initConfig = new HashMap<>();
 
     public static String LOGIN_SESSION_KEY = "login_user";
 
@@ -55,6 +55,7 @@ public class WebConst {
      * 上传文件最大1M
      */
     public static Integer MAX_FILE_SIZE = 1048576;
+
     /**
      * 首页缓存rediskey
      */
