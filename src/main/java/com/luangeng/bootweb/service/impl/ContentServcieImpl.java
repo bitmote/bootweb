@@ -6,22 +6,6 @@ import com.luangeng.bootweb.dao.ContentVoMapper;
 import com.luangeng.bootweb.dao.MetaVoMapper;
 import com.luangeng.bootweb.dto.Types;
 import com.luangeng.bootweb.exception.TipException;
-import com.luangeng.bootweb.service.IContentService;
-import com.luangeng.bootweb.service.IMetaService;
-import com.luangeng.bootweb.service.IRelationshipService;
-import com.luangeng.bootweb.util.RedisKeyUtil;
-import com.luangeng.bootweb.util.Tools;
-import com.vdurmont.emoji.EmojiParser;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.stereotype.Service;
-import com.luangeng.bootweb.constant.WebConst;
-import com.luangeng.bootweb.dao.ContentVoMapper;
-import com.luangeng.bootweb.dao.MetaVoMapper;
-import com.luangeng.bootweb.dto.Types;
-import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.redisKey.ContentKey;
 import com.luangeng.bootweb.modal.vo.ContentVo;
 import com.luangeng.bootweb.modal.vo.ContentVoExample;
@@ -32,8 +16,13 @@ import com.luangeng.bootweb.util.DateKit;
 import com.luangeng.bootweb.util.MyUtils;
 import com.luangeng.bootweb.util.RedisKeyUtil;
 import com.luangeng.bootweb.util.Tools;
+import com.vdurmont.emoji.EmojiParser;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -44,16 +33,16 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class ContentServcieImpl implements IContentService {
 
-    @Resource
+    @Autowired
     private ContentVoMapper contentDao;
 
-    @Resource
+    @Autowired
     private MetaVoMapper metaDao;
 
-    @Resource
+    @Autowired
     private IRelationshipService relationshipService;
 
-    @Resource
+    @Autowired
     private IMetaService metasService;
 
     @Autowired

@@ -4,7 +4,7 @@ package com.luangeng.bootweb.scheduletask;
 //@SpringBootTest
 //public class ScheduleTaskTest {
 //
-//    @Resource
+//    @Autowired
 //    private ScheduleTask scheduleTask;
 //
 //    @Test

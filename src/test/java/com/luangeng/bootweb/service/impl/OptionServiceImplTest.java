@@ -4,7 +4,7 @@ package com.luangeng.bootweb.service.impl;
 //@SpringBootTest
 //public class OptionServiceImplTest {
 //
-//    @Resource
+//    @Autowired
 //    IOptionService optionService;
 //
 //    @Test

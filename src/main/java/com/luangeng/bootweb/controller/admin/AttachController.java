@@ -2,19 +2,6 @@ package com.luangeng.bootweb.controller.admin;
 
 import com.github.pagehelper.PageInfo;
 import com.luangeng.bootweb.constant.WebConst;
-import com.luangeng.bootweb.dto.LogActions;
-import com.luangeng.bootweb.dto.Types;
-import com.luangeng.bootweb.exception.TipException;
-import com.luangeng.bootweb.service.IAttachService;
-import com.luangeng.bootweb.service.ILogService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import com.luangeng.bootweb.constant.WebConst;
 import com.luangeng.bootweb.controller.AbstractController;
 import com.luangeng.bootweb.controller.helper.ExceptionHelper;
 import com.luangeng.bootweb.dto.LogActions;
@@ -27,8 +14,15 @@ import com.luangeng.bootweb.service.IAttachService;
 import com.luangeng.bootweb.service.ILogService;
 import com.luangeng.bootweb.util.Commons;
 import com.luangeng.bootweb.util.MyUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -50,10 +44,10 @@ public class AttachController extends AbstractController {
 
     public static final String CLASSPATH = MyUtils.getUploadFilePath();
 
-    @Resource
+    @Autowired
     private IAttachService attachService;
 
-    @Resource
+    @Autowired
     private ILogService logService;
 
     /**

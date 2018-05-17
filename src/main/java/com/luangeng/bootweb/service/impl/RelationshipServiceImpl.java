@@ -1,14 +1,12 @@
 package com.luangeng.bootweb.service.impl;
 
 import com.luangeng.bootweb.dao.RelationshipVoMapper;
-import com.luangeng.bootweb.service.IRelationshipService;
-import org.springframework.stereotype.Service;
-import com.luangeng.bootweb.dao.RelationshipVoMapper;
 import com.luangeng.bootweb.modal.vo.RelationshipVoExample;
 import com.luangeng.bootweb.modal.vo.RelationshipVoKey;
 import com.luangeng.bootweb.service.IRelationshipService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -18,7 +16,7 @@ import java.util.List;
 @Service
 public class RelationshipServiceImpl implements IRelationshipService {
 
-    @Resource
+    @Autowired
     private RelationshipVoMapper relationshipVoDao;
 
     @Override

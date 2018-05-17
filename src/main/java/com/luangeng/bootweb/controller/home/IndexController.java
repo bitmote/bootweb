@@ -7,11 +7,18 @@ import com.luangeng.bootweb.controller.helper.ExceptionHelper;
 import com.luangeng.bootweb.dto.MetaDto;
 import com.luangeng.bootweb.dto.Types;
 import com.luangeng.bootweb.exception.TipException;
+import com.luangeng.bootweb.modal.bo.ArchiveBo;
+import com.luangeng.bootweb.modal.bo.CommentBo;
+import com.luangeng.bootweb.modal.bo.RestResponseBo;
+import com.luangeng.bootweb.modal.vo.CommentVo;
+import com.luangeng.bootweb.modal.vo.ContentVo;
+import com.luangeng.bootweb.modal.vo.MetaVo;
 import com.luangeng.bootweb.service.ICommentService;
 import com.luangeng.bootweb.service.IContentService;
 import com.luangeng.bootweb.service.IMetaService;
 import com.luangeng.bootweb.service.ISiteService;
 import com.luangeng.bootweb.util.IpUtil;
+import com.luangeng.bootweb.util.MyUtils;
 import com.luangeng.bootweb.util.PatternKit;
 import com.vdurmont.emoji.EmojiParser;
 import org.apache.commons.lang3.StringUtils;
@@ -21,24 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import com.luangeng.bootweb.constant.WebConst;
-import com.luangeng.bootweb.controller.AbstractController;
-import com.luangeng.bootweb.controller.helper.ExceptionHelper;
-import com.luangeng.bootweb.dto.MetaDto;
-import com.luangeng.bootweb.dto.Types;
-import com.luangeng.bootweb.exception.TipException;
-import com.luangeng.bootweb.modal.bo.ArchiveBo;
-import com.luangeng.bootweb.modal.bo.CommentBo;
-import com.luangeng.bootweb.modal.bo.RestResponseBo;
-import com.luangeng.bootweb.modal.vo.CommentVo;
-import com.luangeng.bootweb.modal.vo.ContentVo;
-import com.luangeng.bootweb.modal.vo.MetaVo;
-import com.luangeng.bootweb.service.*;
-import com.luangeng.bootweb.util.IpUtil;
-import com.luangeng.bootweb.util.MyUtils;
-import com.luangeng.bootweb.util.PatternKit;
 
-import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -63,10 +53,10 @@ public class IndexController extends AbstractController {
     @Autowired
     private ICommentService commentService;
 
-    @Resource
+    @Autowired
     private IMetaService metaService;
 
-    @Resource
+    @Autowired
     private ISiteService siteService;
 
 

@@ -10,10 +10,10 @@ package com.luangeng.bootweb.service.impl;
 //    @Autowired
 //    private RedisTemplate redisTemplate;
 //
-//    @Resource
+//    @Autowired
 //    private ValueOperations<String,Object> valueOperations;
 //
-//    @Resource
+//    @Autowired
 //    private TemplateEngine templateEngine;
 //
 //    @Autowired
@@ -22,7 +22,7 @@ package com.luangeng.bootweb.service.impl;
 //    @Autowired
 //    private ICommentService commentService;
 //
-//    @Resource
+//    @Autowired
 //    private IMetaService metaService;
 //
 //    @Test

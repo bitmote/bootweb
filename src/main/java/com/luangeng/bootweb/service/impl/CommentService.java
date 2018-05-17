@@ -4,12 +4,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.luangeng.bootweb.dao.CommentVoMapper;
 import com.luangeng.bootweb.exception.TipException;
-import com.luangeng.bootweb.service.ICommentService;
-import com.luangeng.bootweb.service.IContentService;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Service;
-import com.luangeng.bootweb.dao.CommentVoMapper;
-import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.bo.CommentBo;
 import com.luangeng.bootweb.modal.vo.CommentVo;
 import com.luangeng.bootweb.modal.vo.CommentVoExample;
@@ -18,8 +12,10 @@ import com.luangeng.bootweb.service.ICommentService;
 import com.luangeng.bootweb.service.IContentService;
 import com.luangeng.bootweb.util.DateKit;
 import com.luangeng.bootweb.util.MyUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,10 +26,10 @@ import java.util.List;
 @Service
 public class CommentService implements ICommentService {
 
-    @Resource
+    @Autowired
     private CommentVoMapper commentDao;
 
-    @Resource
+    @Autowired
     private IContentService contentService;
 
     @Override

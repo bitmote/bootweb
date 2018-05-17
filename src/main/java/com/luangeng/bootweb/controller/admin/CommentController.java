@@ -4,25 +4,21 @@ import com.github.pagehelper.PageInfo;
 import com.luangeng.bootweb.controller.AbstractController;
 import com.luangeng.bootweb.controller.helper.ExceptionHelper;
 import com.luangeng.bootweb.exception.TipException;
-import com.luangeng.bootweb.service.ICommentService;
-import com.vdurmont.emoji.EmojiParser;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
-import com.luangeng.bootweb.controller.AbstractController;
-import com.luangeng.bootweb.controller.helper.ExceptionHelper;
-import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.bo.RestResponseBo;
 import com.luangeng.bootweb.modal.vo.CommentVo;
 import com.luangeng.bootweb.modal.vo.CommentVoExample;
 import com.luangeng.bootweb.modal.vo.UserVo;
 import com.luangeng.bootweb.service.ICommentService;
 import com.luangeng.bootweb.util.MyUtils;
+import com.vdurmont.emoji.EmojiParser;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -37,7 +33,7 @@ import javax.servlet.http.HttpServletRequest;
 public class CommentController extends AbstractController {
     private static final Logger logger = LoggerFactory.getLogger(CommentController.class);
 
-    @Resource
+    @Autowired
     private ICommentService commentServcie;
 
     @GetMapping(value = "")

@@ -9,17 +9,6 @@ import com.luangeng.bootweb.dao.MetaVoMapper;
 import com.luangeng.bootweb.dto.MetaDto;
 import com.luangeng.bootweb.dto.Types;
 import com.luangeng.bootweb.exception.TipException;
-import com.luangeng.bootweb.service.ISiteService;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Service;
-import com.luangeng.bootweb.constant.WebConst;
-import com.luangeng.bootweb.dao.AttachVoMapper;
-import com.luangeng.bootweb.dao.CommentVoMapper;
-import com.luangeng.bootweb.dao.ContentVoMapper;
-import com.luangeng.bootweb.dao.MetaVoMapper;
-import com.luangeng.bootweb.dto.MetaDto;
-import com.luangeng.bootweb.dto.Types;
-import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.bo.ArchiveBo;
 import com.luangeng.bootweb.modal.bo.BackResponseBo;
 import com.luangeng.bootweb.modal.bo.StaticticsBo;
@@ -29,8 +18,10 @@ import com.luangeng.bootweb.util.DateKit;
 import com.luangeng.bootweb.util.MyUtils;
 import com.luangeng.bootweb.util.ZipUtils;
 import com.luangeng.bootweb.util.backup.Backup;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -44,16 +35,16 @@ import java.util.*;
 @Service
 public class SiteServiceImpl implements ISiteService {
 
-    @Resource
+    @Autowired
     private CommentVoMapper commentDao;
 
-    @Resource
+    @Autowired
     private ContentVoMapper contentDao;
 
-    @Resource
+    @Autowired
     private AttachVoMapper attachDao;
 
-    @Resource
+    @Autowired
     private MetaVoMapper metaDao;
 
     @Override

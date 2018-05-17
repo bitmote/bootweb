@@ -1,17 +1,15 @@
 package com.luangeng.bootweb.service.impl;
 
 import com.luangeng.bootweb.dao.UserVoMapper;
-import com.luangeng.bootweb.service.IUserService;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Service;
-import com.luangeng.bootweb.dao.UserVoMapper;
 import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.vo.UserVo;
 import com.luangeng.bootweb.modal.vo.UserVoExample;
 import com.luangeng.bootweb.service.IUserService;
 import com.luangeng.bootweb.util.MyUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -21,7 +19,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements IUserService {
 
-    @Resource
+    @Autowired
     private UserVoMapper userDao;
 
     @Override

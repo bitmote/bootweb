@@ -1,16 +1,14 @@
 package com.luangeng.bootweb.service.impl;
 
 import com.luangeng.bootweb.dao.OptionVoMapper;
-import com.luangeng.bootweb.service.IOptionService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-import com.luangeng.bootweb.dao.OptionVoMapper;
 import com.luangeng.bootweb.modal.vo.OptionVo;
 import com.luangeng.bootweb.modal.vo.OptionVoExample;
 import com.luangeng.bootweb.service.IOptionService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +17,7 @@ public class OptionServiceImpl implements IOptionService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OptionServiceImpl.class);
 
-    @Resource
+    @Autowired
     private OptionVoMapper optionalDao;
 
     @Override

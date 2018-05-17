@@ -2,22 +2,16 @@ package com.luangeng.bootweb.interceptor;
 
 import com.luangeng.bootweb.constant.WebConst;
 import com.luangeng.bootweb.dto.Types;
+import com.luangeng.bootweb.modal.vo.UserVo;
 import com.luangeng.bootweb.service.IUserService;
-import com.luangeng.bootweb.util.IpUtil;
-import com.luangeng.bootweb.util.UUID;
+import com.luangeng.bootweb.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import com.luangeng.bootweb.constant.WebConst;
-import com.luangeng.bootweb.dto.Types;
-import com.luangeng.bootweb.modal.vo.UserVo;
-import com.luangeng.bootweb.service.IUserService;
-import com.luangeng.bootweb.util.*;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,7 +24,7 @@ public class BaseInterceptor implements HandlerInterceptor {
     private static final Logger logger = LoggerFactory.getLogger(BaseInterceptor.class);
     private static final String USER_AGENT = "user-agent";
 
-    @Resource
+    @Autowired
     private IUserService userService;
 
     private MapCache cache = MapCache.single();

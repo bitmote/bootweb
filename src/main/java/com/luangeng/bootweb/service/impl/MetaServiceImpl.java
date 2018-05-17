@@ -5,16 +5,6 @@ import com.luangeng.bootweb.dao.MetaVoMapper;
 import com.luangeng.bootweb.dto.MetaDto;
 import com.luangeng.bootweb.dto.Types;
 import com.luangeng.bootweb.exception.TipException;
-import com.luangeng.bootweb.service.IContentService;
-import com.luangeng.bootweb.service.IMetaService;
-import com.luangeng.bootweb.service.IRelationshipService;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Service;
-import com.luangeng.bootweb.constant.WebConst;
-import com.luangeng.bootweb.dao.MetaVoMapper;
-import com.luangeng.bootweb.dto.MetaDto;
-import com.luangeng.bootweb.dto.Types;
-import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.vo.ContentVo;
 import com.luangeng.bootweb.modal.vo.MetaVo;
 import com.luangeng.bootweb.modal.vo.MetaVoExample;
@@ -22,8 +12,10 @@ import com.luangeng.bootweb.modal.vo.RelationshipVoKey;
 import com.luangeng.bootweb.service.IContentService;
 import com.luangeng.bootweb.service.IMetaService;
 import com.luangeng.bootweb.service.IRelationshipService;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,13 +27,13 @@ import java.util.Map;
 @Service
 public class MetaServiceImpl implements IMetaService {
 
-    @Resource
+    @Autowired
     private MetaVoMapper metaDao;
 
-    @Resource
+    @Autowired
     private IRelationshipService relationshipService;
 
-    @Resource
+    @Autowired
     private IContentService contentService;
 
     @Override

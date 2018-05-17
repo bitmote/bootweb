@@ -1,12 +1,11 @@
 package com.luangeng.bootweb.interceptor;
 
+import com.luangeng.bootweb.util.MyUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import com.luangeng.bootweb.util.MyUtils;
-
-import javax.annotation.Resource;
 
 /**
  * @author tangj
@@ -14,7 +13,7 @@ import javax.annotation.Resource;
  */
 @Component
 public class WebMvcConfig extends WebMvcConfigurerAdapter{
-    @Resource
+    @Autowired
     private BaseInterceptor baseInterceptor;
 
     @Override

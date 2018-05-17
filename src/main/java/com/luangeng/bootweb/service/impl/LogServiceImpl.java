@@ -3,16 +3,13 @@ package com.luangeng.bootweb.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.luangeng.bootweb.constant.WebConst;
 import com.luangeng.bootweb.dao.LogVoMapper;
-import com.luangeng.bootweb.service.ILogService;
-import org.springframework.stereotype.Service;
-import com.luangeng.bootweb.constant.WebConst;
-import com.luangeng.bootweb.dao.LogVoMapper;
 import com.luangeng.bootweb.modal.vo.LogVo;
 import com.luangeng.bootweb.modal.vo.LogVoExample;
 import com.luangeng.bootweb.service.ILogService;
 import com.luangeng.bootweb.util.DateKit;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -22,7 +19,7 @@ import java.util.List;
 @Service
 public class LogServiceImpl implements ILogService {
 
-    @Resource
+    @Autowired
     private LogVoMapper logDao;
 
     @Override

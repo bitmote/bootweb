@@ -10,7 +10,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 
-import javax.annotation.Resource;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
@@ -26,7 +25,7 @@ public class MailServiceImpl implements IMailService {
     private JavaMailSender mailSender;
 
 
-    @Resource
+    @Autowired
     private TemplateEngine templateEngine;
 
     @Value("${spring.mail.username}")

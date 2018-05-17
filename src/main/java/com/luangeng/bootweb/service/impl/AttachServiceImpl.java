@@ -3,21 +3,19 @@ package com.luangeng.bootweb.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.luangeng.bootweb.dao.AttachVoMapper;
-import com.luangeng.bootweb.service.IAttachService;
-import org.springframework.stereotype.Service;
-import com.luangeng.bootweb.dao.AttachVoMapper;
 import com.luangeng.bootweb.modal.vo.AttachVo;
 import com.luangeng.bootweb.modal.vo.AttachVoExample;
 import com.luangeng.bootweb.service.IAttachService;
 import com.luangeng.bootweb.util.DateKit;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class AttachServiceImpl implements IAttachService {
 
-    @Resource
+    @Autowired
     private AttachVoMapper attachDao;
 
     @Override

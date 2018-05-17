@@ -1,18 +1,15 @@
 package com.luangeng.bootweb.scheduletask;
 
-import com.luangeng.bootweb.service.ILogService;
-import com.luangeng.bootweb.service.IMailService;
-import com.sun.management.OperatingSystemMXBean;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 import com.luangeng.bootweb.modal.vo.LogVo;
 import com.luangeng.bootweb.service.ILogService;
 import com.luangeng.bootweb.service.IMailService;
-import com.luangeng.bootweb.service.IMetaService;
 import com.luangeng.bootweb.util.DateKit;
+import com.sun.management.OperatingSystemMXBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.lang.management.ManagementFactory;
 import java.util.List;
 
@@ -24,10 +21,10 @@ import java.util.List;
 @Component
 public class ScheduleTask {
 
-    @Resource
+    @Autowired
     ILogService logService;
 
-    @Resource
+    @Autowired
     IMailService mailService;
 
     @Value("${spring.mail.username}")

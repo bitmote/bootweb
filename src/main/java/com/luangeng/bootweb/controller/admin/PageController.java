@@ -7,27 +7,19 @@ import com.luangeng.bootweb.controller.helper.ExceptionHelper;
 import com.luangeng.bootweb.dto.LogActions;
 import com.luangeng.bootweb.dto.Types;
 import com.luangeng.bootweb.exception.TipException;
-import com.luangeng.bootweb.service.IContentService;
-import com.luangeng.bootweb.service.ILogService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
-import com.luangeng.bootweb.constant.WebConst;
-import com.luangeng.bootweb.controller.AbstractController;
-import com.luangeng.bootweb.controller.helper.ExceptionHelper;
-import com.luangeng.bootweb.dto.LogActions;
-import com.luangeng.bootweb.dto.Types;
-import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.bo.RestResponseBo;
 import com.luangeng.bootweb.modal.vo.ContentVo;
 import com.luangeng.bootweb.modal.vo.ContentVoExample;
 import com.luangeng.bootweb.modal.vo.UserVo;
 import com.luangeng.bootweb.service.IContentService;
 import com.luangeng.bootweb.service.ILogService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -41,10 +33,10 @@ import javax.servlet.http.HttpServletRequest;
 public class PageController extends AbstractController {
     private static final Logger logger = LoggerFactory.getLogger(PageController.class);
 
-    @Resource
+    @Autowired
     private IContentService contentService;
 
-    @Resource
+    @Autowired
     private ILogService logService;
 
     @GetMapping(value = "")

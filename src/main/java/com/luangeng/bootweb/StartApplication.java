@@ -5,6 +5,7 @@ import com.luangeng.bootweb.config.HttpPortCfg;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -14,7 +15,6 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 
@@ -23,7 +23,7 @@ import javax.sql.DataSource;
 @MapperScan("com.luangeng.bootweb.dao")
 public class StartApplication {
 
-    @Resource
+    @Autowired
     private HttpPortCfg httpPortCfg;
 
     public static void main(String[] args) throws Exception{
