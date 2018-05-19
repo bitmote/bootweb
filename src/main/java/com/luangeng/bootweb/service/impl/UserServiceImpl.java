@@ -3,7 +3,6 @@ package com.luangeng.bootweb.service.impl;
 import com.luangeng.bootweb.dao.UserVoMapper;
 import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.vo.UserVo;
-import com.luangeng.bootweb.modal.vo.UserVoExample;
 import com.luangeng.bootweb.service.IUserService;
 import com.luangeng.bootweb.util.MyUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -29,7 +28,7 @@ public class UserServiceImpl implements IUserService {
             //用户密码摘要
             String encodePwd = MyUtils.MD5encode(userVo.getUsername() + userVo.getPassword());
             userVo.setPassword(encodePwd);
-            userDao.insertSelective(userVo);
+            userDao.insert(userVo);
         }
         return userVo.getUid();
     }
@@ -48,16 +47,12 @@ public class UserServiceImpl implements IUserService {
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
             throw new TipException("用户名和密码为空");
         }
-        UserVoExample example = new UserVoExample();
-        UserVoExample.Criteria criteria = example.createCriteria();
-        criteria.andUsernameEqualTo(username);
-        long count = userDao.countByExample(example);
+        long count = userDao.countByName(username);
         if (count < 1) {
             throw new TipException("不存在该用户");
         }
         String pwd = MyUtils.MD5encode(username + password);
-        criteria.andPasswordEqualTo(pwd);
-        List<UserVo> userVoList = userDao.selectByExample(example);
+        List<UserVo> userVoList = userDao.selectByNamePwd(username, pwd);
         if (userVoList.size() != 1) {
             throw new TipException("用户名或者密码错误");
         }
@@ -69,7 +64,7 @@ public class UserServiceImpl implements IUserService {
         if (null == userVo || null == userVo.getUid()) {
             throw new TipException("userVo is null");
         }
-        int i = userDao.updateByPrimaryKeySelective(userVo);
+        int i = userDao.update(userVo);
         if (i != 1) {
             throw new TipException("update user by uid and retrun is not one");
         }

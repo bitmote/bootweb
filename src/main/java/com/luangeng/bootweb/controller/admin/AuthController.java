@@ -2,7 +2,6 @@ package com.luangeng.bootweb.controller.admin;
 
 import com.luangeng.bootweb.constant.WebConst;
 import com.luangeng.bootweb.controller.AbstractController;
-import com.luangeng.bootweb.controller.helper.ExceptionHelper;
 import com.luangeng.bootweb.dto.LogActions;
 import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.bo.RestResponseBo;
@@ -68,7 +67,7 @@ public class AuthController extends AbstractController {
             }
             cache.set("login_error_count", error_count, 10 * 60);
             String msg = "登录失败";
-            return ExceptionHelper.handlerException(logger, msg, e);
+            return handlerException(logger, msg, e);
         }
         return RestResponseBo.ok();
     }

@@ -3,7 +3,6 @@ package com.luangeng.bootweb.controller.admin;
 import com.github.pagehelper.PageInfo;
 import com.luangeng.bootweb.constant.WebConst;
 import com.luangeng.bootweb.controller.AbstractController;
-import com.luangeng.bootweb.controller.helper.ExceptionHelper;
 import com.luangeng.bootweb.dto.LogActions;
 import com.luangeng.bootweb.dto.Types;
 import com.luangeng.bootweb.exception.TipException;
@@ -87,7 +86,7 @@ public class PageController extends AbstractController {
             contentService.publish(contents);
         } catch (Exception e) {
             String msg = "页面发布失败";
-            return ExceptionHelper.handlerException(logger, msg, e);
+            return handlerException(logger, msg, e);
         }
         return RestResponseBo.ok();
     }
@@ -119,7 +118,7 @@ public class PageController extends AbstractController {
             contentService.updateArticle(contents);
         } catch (Exception e) {
             String msg = "页面编辑失败";
-            return ExceptionHelper.handlerException(logger, msg, e);
+            return handlerException(logger, msg, e);
         }
         return RestResponseBo.ok();
     }
@@ -133,7 +132,7 @@ public class PageController extends AbstractController {
             logService.insertLog(LogActions.DEL_PAGE.getAction(), cid + "", request.getRemoteAddr(), this.getUid(request));
         } catch (Exception e) {
             String msg = "页面删除失败";
-            return ExceptionHelper.handlerException(logger, msg, e);
+            return handlerException(logger, msg, e);
         }
         return RestResponseBo.ok();
     }

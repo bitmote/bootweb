@@ -2,7 +2,6 @@ package com.luangeng.bootweb.controller.admin;
 
 import com.luangeng.bootweb.constant.WebConst;
 import com.luangeng.bootweb.controller.AbstractController;
-import com.luangeng.bootweb.controller.helper.ExceptionHelper;
 import com.luangeng.bootweb.dto.Types;
 import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.bo.RestResponseBo;
@@ -50,7 +49,7 @@ public class CategoryController extends AbstractController {
             metaService.saveMeta(Types.CATEGORY.getType(), cname, mid);
         } catch (Exception e) {
             String msg = "分类保存失败";
-            return ExceptionHelper.handlerException(logger, msg, e);
+            return handlerException(logger, msg, e);
         }
         return RestResponseBo.ok();
     }
@@ -63,7 +62,7 @@ public class CategoryController extends AbstractController {
             metaService.delete(mid);
         } catch (Exception e) {
             String msg = "删除失败";
-            return ExceptionHelper.handlerException(logger, msg, e);
+            return handlerException(logger, msg, e);
         }
         return RestResponseBo.ok();
     }

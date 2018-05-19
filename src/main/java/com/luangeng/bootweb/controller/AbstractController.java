@@ -1,8 +1,11 @@
 package com.luangeng.bootweb.controller;
 
+import com.luangeng.bootweb.exception.TipException;
+import com.luangeng.bootweb.modal.bo.RestResponseBo;
 import com.luangeng.bootweb.modal.vo.UserVo;
 import com.luangeng.bootweb.util.MapCache;
 import com.luangeng.bootweb.util.MyUtils;
+import org.slf4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -47,5 +50,14 @@ public abstract class AbstractController {
 
     public String render_404() {
         return "comm/error_404";
+    }
+
+    public static RestResponseBo handlerException(Logger logger, String msg, Exception e) {
+        if (e instanceof TipException) {
+            msg = e.getMessage();
+        } else {
+            logger.error(msg, e);
+        }
+        return RestResponseBo.fail(msg);
     }
 }

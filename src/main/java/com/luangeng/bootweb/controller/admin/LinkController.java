@@ -1,7 +1,6 @@
 package com.luangeng.bootweb.controller.admin;
 
 import com.luangeng.bootweb.controller.AbstractController;
-import com.luangeng.bootweb.controller.helper.ExceptionHelper;
 import com.luangeng.bootweb.dto.Types;
 import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.bo.RestResponseBo;
@@ -58,7 +57,7 @@ public class LinkController extends AbstractController {
             }
         } catch (Exception e) {
             String msg = "友链保存失败";
-            return ExceptionHelper.handlerException(logger, msg, e);
+            return handlerException(logger, msg, e);
         }
         return RestResponseBo.ok();
     }
@@ -71,7 +70,7 @@ public class LinkController extends AbstractController {
             metaService.delete(mid);
         } catch (Exception e) {
             String msg = "友链删除失败";
-            return ExceptionHelper.handlerException(logger, msg, e);
+            return handlerException(logger, msg, e);
         }
         return RestResponseBo.ok();
     }

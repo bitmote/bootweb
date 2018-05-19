@@ -3,7 +3,6 @@ package com.luangeng.bootweb.controller.home;
 import com.github.pagehelper.PageInfo;
 import com.luangeng.bootweb.constant.WebConst;
 import com.luangeng.bootweb.controller.AbstractController;
-import com.luangeng.bootweb.controller.helper.ExceptionHelper;
 import com.luangeng.bootweb.dto.Types;
 import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.bo.ArchiveBo;
@@ -227,7 +226,7 @@ public class IndexController extends AbstractController {
             return RestResponseBo.ok();
         } catch (Exception e) {
             String msg = "评论发布失败";
-            return ExceptionHelper.handlerException(logger,msg,e);
+            return handlerException(logger, msg, e);
         }
     }
 

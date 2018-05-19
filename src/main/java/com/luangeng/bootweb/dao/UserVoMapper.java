@@ -1,9 +1,7 @@
 package com.luangeng.bootweb.dao;
 
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
 import com.luangeng.bootweb.modal.vo.UserVo;
-import com.luangeng.bootweb.modal.vo.UserVoExample;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -13,26 +11,19 @@ import java.util.List;
  */
 @Component
 public interface UserVoMapper {
-    long countByExample(UserVoExample example);
 
-    int deleteByExample(UserVoExample example);
+    long countByName(String name);
 
     int deleteByPrimaryKey(Integer uid);
 
     int insert(UserVo record);
 
-    int insertSelective(UserVo record);
-
-    List<UserVo> selectByExample(UserVoExample example);
+    List<UserVo> select();
 
     UserVo selectByPrimaryKey(Integer uid);
 
-    int updateByExampleSelective(@Param("record") UserVo record, @Param("example") UserVoExample example);
+    int update(UserVo record);
 
-    int updateByExample(@Param("record") UserVo record, @Param("example") UserVoExample example);
-
-    int updateByPrimaryKeySelective(UserVo record);
-
-    int updateByPrimaryKey(UserVo record);
+    List<UserVo> selectByNamePwd(String name, String pwd);
 
 }

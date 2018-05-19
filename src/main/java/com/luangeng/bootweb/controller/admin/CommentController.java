@@ -2,7 +2,6 @@ package com.luangeng.bootweb.controller.admin;
 
 import com.github.pagehelper.PageInfo;
 import com.luangeng.bootweb.controller.AbstractController;
-import com.luangeng.bootweb.controller.helper.ExceptionHelper;
 import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.bo.RestResponseBo;
 import com.luangeng.bootweb.modal.vo.CommentVo;
@@ -61,7 +60,7 @@ public class CommentController extends AbstractController {
             commentServcie.delete(coid, comments.getCid());
         } catch (Exception e) {
             String msg = "评论删除失败";
-            return ExceptionHelper.handlerException(logger, msg, e);
+            return handlerException(logger, msg, e);
         }
         return RestResponseBo.ok();
     }
@@ -77,7 +76,7 @@ public class CommentController extends AbstractController {
             commentServcie.update(comments);
         } catch (Exception e) {
             String msg = "操作失败";
-            return ExceptionHelper.handlerException(logger, msg, e);
+            return handlerException(logger, msg, e);
         }
         return RestResponseBo.ok();
     }
@@ -117,7 +116,7 @@ public class CommentController extends AbstractController {
             return RestResponseBo.ok();
         } catch (Exception e) {
             String msg = "回复失败";
-            return ExceptionHelper.handlerException(logger, msg, e);
+            return handlerException(logger, msg, e);
         }
     }
 }
