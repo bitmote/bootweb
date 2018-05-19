@@ -40,7 +40,18 @@ public class MetaVo implements Serializable{
 
     private Integer parent;
 
+    // TODO:234
+    private Integer count = 1;
+
     private static final long serialVersionUID = 1L;
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 
     public Integer getMid() {
         return mid;

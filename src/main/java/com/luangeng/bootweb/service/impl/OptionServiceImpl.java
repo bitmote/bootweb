@@ -2,7 +2,6 @@ package com.luangeng.bootweb.service.impl;
 
 import com.luangeng.bootweb.dao.OptionVoMapper;
 import com.luangeng.bootweb.modal.vo.OptionVo;
-import com.luangeng.bootweb.modal.vo.OptionVoExample;
 import com.luangeng.bootweb.service.IOptionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +21,7 @@ public class OptionServiceImpl implements IOptionService {
 
     @Override
     public void insertOption(OptionVo optionVo) {
-        optionalDao.insertSelective(optionVo);
+        optionalDao.insert(optionVo);
     }
 
     @Override
@@ -37,19 +36,19 @@ public class OptionServiceImpl implements IOptionService {
             optionVo = new OptionVo();
             optionVo.setName(name);
             optionVo.setValue(value);
-            optionalDao.insertSelective(optionVo);
+            optionalDao.insert(optionVo);
         } else {
             optionVo = new OptionVo();
             optionVo.setName(name);
             optionVo.setValue(value);
-            optionalDao.updateByPrimaryKeySelective(optionVo);
+            optionalDao.update(optionVo);
         }
         LOGGER.debug("Exit insertOption method.");
     }
 
     @Override
     public List<OptionVo> getOptions() {
-        return optionalDao.selectByExample(new OptionVoExample());
+        return optionalDao.select();
     }
 
     @Override

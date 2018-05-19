@@ -4,7 +4,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.luangeng.bootweb.dao.AttachVoMapper;
 import com.luangeng.bootweb.modal.vo.AttachVo;
-import com.luangeng.bootweb.modal.vo.AttachVoExample;
 import com.luangeng.bootweb.service.IAttachService;
 import com.luangeng.bootweb.util.DateKit;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +20,7 @@ public class AttachServiceImpl implements IAttachService {
     @Override
     public PageInfo<AttachVo> getAttachs(Integer page, Integer limit) {
         PageHelper.startPage(page, limit);
-        AttachVoExample attachVoExample = new AttachVoExample();
-        attachVoExample.setOrderByClause("id desc");
-        List<AttachVo> attachVos = attachDao.selectByExample(attachVoExample);
+        List<AttachVo> attachVos = attachDao.select();
         return new PageInfo<>(attachVos);
     }
 
@@ -35,7 +32,7 @@ public class AttachServiceImpl implements IAttachService {
         attach.setFkey(fkey);
         attach.setFtype(ftype);
         attach.setCreated(DateKit.getCurrentUnixTime());
-        attachDao.insertSelective(attach);
+        attachDao.insert(attach);
     }
 
     @Override

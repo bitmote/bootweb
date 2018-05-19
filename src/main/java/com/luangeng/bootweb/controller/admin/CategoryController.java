@@ -3,10 +3,10 @@ package com.luangeng.bootweb.controller.admin;
 import com.luangeng.bootweb.constant.WebConst;
 import com.luangeng.bootweb.controller.AbstractController;
 import com.luangeng.bootweb.controller.helper.ExceptionHelper;
-import com.luangeng.bootweb.dto.MetaDto;
 import com.luangeng.bootweb.dto.Types;
 import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.bo.RestResponseBo;
+import com.luangeng.bootweb.modal.vo.MetaVo;
 import com.luangeng.bootweb.service.IMetaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,8 +35,8 @@ public class CategoryController extends AbstractController {
 
     @GetMapping(value = "")
     public String index(HttpServletRequest request) {
-        List<MetaDto> categories = metaService.getMetaList(Types.CATEGORY.getType(), null, WebConst.MAX_POSTS);
-        List<MetaDto> tags = metaService.getMetaList(Types.TAG.getType(), null, WebConst.MAX_POSTS);
+        List<MetaVo> categories = metaService.getMetaList(Types.CATEGORY.getType(), WebConst.MAX_POSTS);
+        List<MetaVo> tags = metaService.getMetaList(Types.TAG.getType(), WebConst.MAX_POSTS);
         request.setAttribute("categories", categories);
         request.setAttribute("tags", tags);
         return "admin/category";

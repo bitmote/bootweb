@@ -1,7 +1,5 @@
 package com.luangeng.bootweb.service;
 
-import com.luangeng.bootweb.dto.MetaDto;
-import com.luangeng.bootweb.dto.MetaDto;
 import com.luangeng.bootweb.modal.vo.MetaVo;
 
 import java.util.List;
@@ -18,7 +16,7 @@ public interface IMetaService {
      * @param name
      * @return
      */
-    MetaDto getMeta(String type, String name);
+    MetaVo getMeta(String type, String name);
 
     /**
      * 根据文章id获取项目个数
@@ -55,7 +53,7 @@ public interface IMetaService {
      * 根据类型查询项目列表，带项目下面的文章数
      * @return
      */
-    List<MetaDto> getMetaList(String type, String orderby, int limit);
+    List<MetaVo> getMetaList(String type, int limit);
 
     /**
      * 删除项目

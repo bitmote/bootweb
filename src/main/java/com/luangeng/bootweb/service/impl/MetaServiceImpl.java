@@ -1,13 +1,12 @@
 package com.luangeng.bootweb.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.luangeng.bootweb.constant.WebConst;
 import com.luangeng.bootweb.dao.MetaVoMapper;
-import com.luangeng.bootweb.dto.MetaDto;
 import com.luangeng.bootweb.dto.Types;
 import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.vo.ContentVo;
 import com.luangeng.bootweb.modal.vo.MetaVo;
-import com.luangeng.bootweb.modal.vo.MetaVoExample;
 import com.luangeng.bootweb.modal.vo.RelationshipVoKey;
 import com.luangeng.bootweb.service.IContentService;
 import com.luangeng.bootweb.service.IMetaService;
@@ -16,9 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author tangj
@@ -37,25 +34,25 @@ public class MetaServiceImpl implements IMetaService {
     private IContentService contentService;
 
     @Override
-    public MetaDto getMeta(String type, String name) {
+    public MetaVo getMeta(String type, String name) {
         if (StringUtils.isNotBlank(type) && StringUtils.isNotBlank(name)) {
-            return metaDao.selectDtoByNameAndType(name, type);
+            List<MetaVo> list = metaDao.selectByNameAndType(name, type);
+            if (list.size() == 1) {
+                return list.get(0);
+            }
         }
         return null;
     }
 
     @Override
     public Integer countMeta(Integer mid) {
-        return metaDao.countWithSql(mid);
+        return metaDao.countById(mid);
     }
 
     @Override
     public List<MetaVo> getMetas(String types) {
         if (StringUtils.isNotBlank(types)) {
-            MetaVoExample metaVoExample = new MetaVoExample();
-            metaVoExample.setOrderByClause("sort desc, mid desc");
-            metaVoExample.createCriteria().andTypeEqualTo(types);
-            return metaDao.selectByExample(metaVoExample);
+            return metaDao.selectByType(types);
         }
         return null;
     }
@@ -74,9 +71,7 @@ public class MetaServiceImpl implements IMetaService {
     }
 
     private void saveOrUpdate(Integer cid, String name, String type) {
-        MetaVoExample metaVoExample = new MetaVoExample();
-        metaVoExample.createCriteria().andTypeEqualTo(type).andNameEqualTo(name);
-        List<MetaVo> metaVos = metaDao.selectByExample(metaVoExample);
+        List<MetaVo> metaVos = metaDao.selectByNameAndType(name, type);
 
         int mid;
         MetaVo metas;
@@ -90,7 +85,7 @@ public class MetaServiceImpl implements IMetaService {
             metas.setSlug(name);
             metas.setName(name);
             metas.setType(type);
-            metaDao.insertSelective(metas);
+            metaDao.insert(metas);
             mid = metas.getMid();
         }
         if (mid != 0) {
@@ -107,9 +102,7 @@ public class MetaServiceImpl implements IMetaService {
     @Override
     public void saveMeta(String type, String name, Integer mid) {
         if (StringUtils.isNotBlank(type) && StringUtils.isNotBlank(name)) {
-            MetaVoExample metaVoExample = new MetaVoExample();
-            metaVoExample.createCriteria().andTypeEqualTo(type).andNameEqualTo(name);
-            List<MetaVo> metaVos = metaDao.selectByExample(metaVoExample);
+            List<MetaVo> metaVos = metaDao.selectByNameAndType(name, type);
             MetaVo metas;
             if (metaVos.size() != 0) {
                 throw new TipException("已经存在该项");
@@ -119,31 +112,25 @@ public class MetaServiceImpl implements IMetaService {
                 if (null != mid) {
                     MetaVo original = metaDao.selectByPrimaryKey(mid);
                     metas.setMid(mid);
-                    metaDao.updateByPrimaryKeySelective(metas);
+                    metaDao.updateByPrimaryKey(metas);
 //                    更新原有文章的categories
                     contentService.updateCategory(original.getName(),name);
                 } else {
                     metas.setType(type);
-                    metaDao.insertSelective(metas);
+                    metaDao.insert(metas);
                 }
             }
         }
     }
 
     @Override
-    public List<MetaDto> getMetaList(String type, String orderby, int limit) {
+    public List<MetaVo> getMetaList(String type, int limit) {
         if (StringUtils.isNotBlank(type)) {
-            if (StringUtils.isBlank(orderby)) {
-                orderby = "count desc, a.mid desc";
-            }
             if (limit < 1 || limit > WebConst.MAX_POSTS) {
                 limit = 10;
             }
-            Map<String, Object> paraMap = new HashMap<>();
-            paraMap.put("type", type);
-            paraMap.put("order", orderby);
-            paraMap.put("limit", limit);
-            return metaDao.selectFromSql(paraMap);
+            PageHelper.startPage(1, limit);
+            return metaDao.selectByType(type);
         }
         return null;
     }
@@ -195,14 +182,14 @@ public class MetaServiceImpl implements IMetaService {
     @Override
     public void saveMeta(MetaVo metas) {
         if (null != metas) {
-            metaDao.insertSelective(metas);
+            metaDao.insert(metas);
         }
     }
 
     @Override
     public void update(MetaVo metas) {
         if (null != metas && null != metas.getMid()) {
-            metaDao.updateByPrimaryKeySelective(metas);
+            metaDao.update(metas);
         }
     }
 }

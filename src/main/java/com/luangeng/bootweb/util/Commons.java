@@ -2,22 +2,21 @@ package com.luangeng.bootweb.util;
 
 import com.github.pagehelper.PageInfo;
 import com.luangeng.bootweb.constant.WebConst;
-import com.luangeng.bootweb.dto.MetaDto;
 import com.luangeng.bootweb.dto.Types;
+import com.luangeng.bootweb.modal.vo.CommentVo;
+import com.luangeng.bootweb.modal.vo.ContentVo;
+import com.luangeng.bootweb.modal.vo.MetaVo;
 import com.luangeng.bootweb.service.ISiteService;
 import com.vdurmont.emoji.EmojiParser;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
-import com.luangeng.bootweb.constant.WebConst;
-import com.luangeng.bootweb.dto.MetaDto;
-import com.luangeng.bootweb.dto.Types;
-import com.luangeng.bootweb.modal.vo.CommentVo;
-import com.luangeng.bootweb.modal.vo.ContentVo;
-import com.luangeng.bootweb.service.ISiteService;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -341,7 +340,7 @@ public class Commons {
      *
      * @return
      */
-    public static List<MetaDto> categries(int limit) {
+    public static List<MetaVo> categries(int limit) {
         return siteService.metas(Types.CATEGORY.getType(), null, limit);
     }
 
@@ -350,7 +349,7 @@ public class Commons {
      *
      * @return
      */
-    public static List<MetaDto> categries() {
+    public static List<MetaVo> categries() {
         return categries(WebConst.MAX_POSTS);
     }
 
@@ -359,7 +358,7 @@ public class Commons {
      *
      * @return
      */
-    public static List<MetaDto> tags(int limit) {
+    public static List<MetaVo> tags(int limit) {
         return siteService.metas(Types.TAG.getType(), null, limit);
     }
 
@@ -368,7 +367,7 @@ public class Commons {
      *
      * @return
      */
-    public static List<MetaDto> tags() {
+    public static List<MetaVo> tags() {
         return tags(WebConst.MAX_POSTS);
     }
 
@@ -435,8 +434,8 @@ public class Commons {
         return ICONS[cid % ICONS.length];
     }
 
-    public static String showCategoryUrl(MetaDto metaDto){
-        String url = "/category/"+metaDto.getName();
+    public static String showCategoryUrl(MetaVo MetaVo) {
+        String url = "/category/" + MetaVo.getName();
         return url;
     }
     /**

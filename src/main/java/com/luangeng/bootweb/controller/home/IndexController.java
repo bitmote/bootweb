@@ -4,7 +4,6 @@ import com.github.pagehelper.PageInfo;
 import com.luangeng.bootweb.constant.WebConst;
 import com.luangeng.bootweb.controller.AbstractController;
 import com.luangeng.bootweb.controller.helper.ExceptionHelper;
-import com.luangeng.bootweb.dto.MetaDto;
 import com.luangeng.bootweb.dto.Types;
 import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.bo.ArchiveBo;
@@ -85,7 +84,7 @@ public class IndexController extends AbstractController {
         // 开启thymeleaf缓存，加快访问速度
         p = p < 0 || p > WebConst.MAX_PAGE ? 1 : p;
         PageInfo<ContentVo> articles = contentService.getContents(p, limit);
-        List<MetaDto> categories = metaService.getMetaList(Types.CATEGORY.getType(), null, WebConst.MAX_POSTS);
+        List<MetaVo> categories = metaService.getMetaList(Types.CATEGORY.getType(), WebConst.MAX_POSTS);
         request.setAttribute("categories", categories);
         request.setAttribute("articles", articles);
         if (p > 1) {
@@ -248,13 +247,13 @@ public class IndexController extends AbstractController {
     @GetMapping(value = "category/{keyword}/{page}")
     public String categories(HttpServletRequest request, @PathVariable String keyword, @PathVariable int page, @RequestParam(value = "limit", defaultValue = "12") int limit) {
         page = page < 0 || page > WebConst.MAX_PAGE ? 1 : page;
-        MetaDto metaDto = metaService.getMeta(Types.CATEGORY.getType(), keyword);
-        if (null == metaDto) {
+        MetaVo MetaVo = metaService.getMeta(Types.CATEGORY.getType(), keyword);
+        if (null == MetaVo) {
             return this.render_404();
         }
-        PageInfo<ContentVo> contentsPaginator = contentService.getArticles(metaDto.getMid(), page, limit);
+        PageInfo<ContentVo> contentsPaginator = contentService.getArticles(MetaVo.getMid(), page, limit);
         request.setAttribute("articles", contentsPaginator);
-        request.setAttribute("meta", metaDto);
+        request.setAttribute("meta", MetaVo);
         request.setAttribute("type", "分类");
         request.setAttribute("keyword", keyword);
 
@@ -355,14 +354,14 @@ public class IndexController extends AbstractController {
         page = page < 0 || page > WebConst.MAX_PAGE ? 1 : page;
 //        对于空格的特殊处理
         name = name.replaceAll("\\+", " ");
-        MetaDto metaDto = metaService.getMeta(Types.TAG.getType(), name);
-        if (null == metaDto) {
+        MetaVo MetaVo = metaService.getMeta(Types.TAG.getType(), name);
+        if (null == MetaVo) {
             return this.render_404();
         }
 
-        PageInfo<ContentVo> contentsPaginator = contentService.getArticles(metaDto.getMid(), page, limit);
+        PageInfo<ContentVo> contentsPaginator = contentService.getArticles(MetaVo.getMid(), page, limit);
         request.setAttribute("articles", contentsPaginator);
-        request.setAttribute("meta", metaDto);
+        request.setAttribute("meta", MetaVo);
         request.setAttribute("type", "标签");
         request.setAttribute("keyword", name);
 

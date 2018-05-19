@@ -6,7 +6,6 @@ import com.luangeng.bootweb.dao.AttachVoMapper;
 import com.luangeng.bootweb.dao.CommentVoMapper;
 import com.luangeng.bootweb.dao.ContentVoMapper;
 import com.luangeng.bootweb.dao.MetaVoMapper;
-import com.luangeng.bootweb.dto.MetaDto;
 import com.luangeng.bootweb.dto.Types;
 import com.luangeng.bootweb.exception.TipException;
 import com.luangeng.bootweb.modal.bo.ArchiveBo;
@@ -26,7 +25,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * @author tangj
@@ -149,11 +151,9 @@ public class SiteServiceImpl implements ISiteService {
 
         Long articles = contentDao.countByExample(contentVoExample);
         Long comments = commentDao.countByExample(new CommentVoExample());
-        Long attachs = attachDao.countByExample(new AttachVoExample());
+        Long attachs = attachDao.count();
 
-        MetaVoExample metaVoExample = new MetaVoExample();
-        metaVoExample.createCriteria().andTypeEqualTo(Types.LINK.getType());
-        Long links = metaDao.countByExample(metaVoExample);
+        Long links = metaDao.countByType(Types.LINK.getType());
 
         staticticsBo.setArticles(articles);
         staticticsBo.setComments(comments);
@@ -184,20 +184,14 @@ public class SiteServiceImpl implements ISiteService {
     }
 
     @Override
-    public List<MetaDto> metas(String type, String orderBy, int limit) {
-        List<MetaDto> retList = null;
+    public List<MetaVo> metas(String type, String orderBy, int limit) {
+        List<MetaVo> retList = null;
         if (StringUtils.isNotBlank(type)) {
-            if (StringUtils.isBlank(orderBy)) {
-                orderBy = "count desc, a.mid desc";
-            }
             if (limit < 1 || limit > WebConst.MAX_POSTS) {
                 limit = 10;
             }
-            Map<String, Object> paraMap = new HashMap<>();
-            paraMap.put("type", type);
-            paraMap.put("order", orderBy);
-            paraMap.put("limit", limit);
-            retList = metaDao.selectFromSql(paraMap);
+
+            retList = metaDao.selectByType(type);
         }
         return retList;
     }

@@ -1,12 +1,11 @@
 package com.luangeng.bootweb.service;
 
-import com.luangeng.bootweb.dto.MetaDto;
-import com.luangeng.bootweb.dto.MetaDto;
 import com.luangeng.bootweb.modal.bo.ArchiveBo;
 import com.luangeng.bootweb.modal.bo.BackResponseBo;
 import com.luangeng.bootweb.modal.bo.StaticticsBo;
 import com.luangeng.bootweb.modal.vo.CommentVo;
 import com.luangeng.bootweb.modal.vo.ContentVo;
+import com.luangeng.bootweb.modal.vo.MetaVo;
 
 import java.util.List;
 
@@ -74,5 +73,5 @@ public interface ISiteService {
      * @param limit
      * @return
      */
-    List<MetaDto> metas(String type, String orderBy, int limit);
+    List<MetaVo> metas(String type, String orderBy, int limit);
 }

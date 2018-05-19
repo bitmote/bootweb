@@ -1,41 +1,29 @@
 package com.luangeng.bootweb.dao;
 
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
-import com.luangeng.bootweb.dto.MetaDto;
 import com.luangeng.bootweb.modal.vo.MetaVo;
-import com.luangeng.bootweb.modal.vo.MetaVoExample;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Map;
 
 @Component
 public interface MetaVoMapper {
-    long countByExample(MetaVoExample example);
 
-    int deleteByExample(MetaVoExample example);
+    long countByType(String type);
+
+    int countById(int mid);
 
     int deleteByPrimaryKey(Integer mid);
 
-    int insert(MetaVo record);
-
-    int insertSelective(MetaVo record);
-
-    List<MetaVo> selectByExample(MetaVoExample example);
+    List<MetaVo> selectByNameAndType(String name, String type);
 
     MetaVo selectByPrimaryKey(Integer mid);
 
-    int updateByExampleSelective(@Param("record") MetaVo record, @Param("example") MetaVoExample example);
+    List<MetaVo> selectByType(String type);
 
-    int updateByExample(@Param("record") MetaVo record, @Param("example") MetaVoExample example);
-
-    int updateByPrimaryKeySelective(MetaVo record);
+    int insert(MetaVo metaVo);
 
     int updateByPrimaryKey(MetaVo record);
 
-    List<MetaDto> selectFromSql(Map<String, Object> paraMap);
+    int update(MetaVo metaVo);
 
-    MetaDto selectDtoByNameAndType(@Param("name") String name, @Param("type") String type);
-
-    Integer countWithSql(Integer mid);
 }

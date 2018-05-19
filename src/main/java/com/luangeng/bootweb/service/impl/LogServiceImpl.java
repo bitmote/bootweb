@@ -4,7 +4,6 @@ import com.github.pagehelper.PageHelper;
 import com.luangeng.bootweb.constant.WebConst;
 import com.luangeng.bootweb.dao.LogVoMapper;
 import com.luangeng.bootweb.modal.vo.LogVo;
-import com.luangeng.bootweb.modal.vo.LogVoExample;
 import com.luangeng.bootweb.service.ILogService;
 import com.luangeng.bootweb.util.DateKit;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,10 +45,8 @@ public class LogServiceImpl implements ILogService {
         if (limit < 1 || limit > WebConst.MAX_POSTS) {
             limit = 10;
         }
-        LogVoExample logVoExample = new LogVoExample();
-        logVoExample.setOrderByClause("id desc");
         PageHelper.startPage((page - 1) * limit, limit);
-        List<LogVo> logVos = logDao.selectByExample(logVoExample);
+        List<LogVo> logVos = logDao.select();
         return logVos;
     }
 }
