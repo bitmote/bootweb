@@ -75,6 +75,7 @@ public class ContentServcieImpl implements IContentService {
         }
         // 去除表情
         contents.setContent(EmojiParser.parseToAliases(contents.getContent()));
+        contents.setThumbimg(phraseThumbimg(contents.getContent()));
 
         int time = DateKit.getCurrentUnixTime();
         contents.setCreated(time);
@@ -90,6 +91,12 @@ public class ContentServcieImpl implements IContentService {
 
         metasService.saveMetas(cid, tags, Types.TAG.getType());
         metasService.saveMetas(cid, categories, Types.CATEGORY.getType());
+    }
+
+    private String phraseThumbimg(String content) {
+        int i = content.indexOf("![alt](");
+        int j = content.substring(i + 7).indexOf(")");
+        return content.substring(i + 7, j);
     }
 
     @Override

@@ -35,8 +35,8 @@
         select
         <include refid="Base_Column_List"/>
         from t_metas
-        where type = #{type}
-        and name = #{name}
+        where type = #{param2}
+        and name = #{param1}
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

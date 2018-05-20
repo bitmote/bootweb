@@ -438,12 +438,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .header {
-    line-height: 78px;
+    line-height: 48px;
     position: fixed;
     z-index: 10;
     display: block;
     width: 100%;
-    height: 80px;
+    height: 50px;
     padding: 0;
     text-align: right;
     -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
@@ -455,7 +455,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     position: relative;
     width: 1040px;
     max-width: 100%;
-    height: 80px;
+    height: 50px;
     margin: 0 auto
 }
 
@@ -470,7 +470,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     width: auto;
     max-width: 50%;
     height: 22px;
-    margin-top: -16px;
+    margin-top: -10px;
     margin-left: 25px;
     text-decoration: none
 }
@@ -590,7 +590,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .navbar-search {
-    line-height: 80px;
+    line-height: 50px;
     display: inline-block;
     width: 20px;
     padding: 0 40px 0 0;

@@ -40,7 +40,7 @@ public class BaseInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String uri = request.getRequestURI();
         String ip = IpUtil.getIpAddrByRequest(request);
-        logger.info("用户访问地址:{}, 来路地址:{}, UserAgent:{}", uri, ip, request.getHeader(USER_AGENT));
+        logger.info("访问路径:{}, 来访IP:{}, UserAgent:{}", uri, ip, request.getHeader(USER_AGENT));
 
         //请求拦截处理
         UserVo user = MyUtils.getLoginUser(request);

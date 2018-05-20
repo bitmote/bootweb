@@ -11,16 +11,15 @@
                     <img th:src="@{${commons.show_thumb(article)}}" alt="" class="am-u-sm-12"/>
                 </div>
                 <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
-                    <!-- 文章分类 -->
-                    <span class="blog-color" th:utext="${commons.show_categories(article.categories)}"></span>
-                    <span>&nbsp;&nbsp;&nbsp;</span>
-                    <!-- 发布时间 -->
-                    <span th:text="'发布于 '+ ${commons.fmtdate(article.created)}"></span>
-                    <h2>
-                        <div><a th:href="${commons.permalink(article)}"
+                    <h3>
+                        <a th:href="${commons.permalink(article)}"
                                 th:text="${article.title}"></a>
-                        </div>
-                    </h2>
+                    </h3>
+                    <!-- 发布时间 --><!-- 文章分类 -->
+                    <p class="am-article-meta">
+                        <span th:text="'发布于 '+ ${commons.fmtdate(article.created)}"></span>
+                        <span>&nbsp;&nbsp;&nbsp;</span>
+                        <span class="blog-color" th:utext="${commons.show_categories(article.categories)}"></span></p>
                     <!-- 文章摘要-->
                     <div th:utext="${commons.intro(article,75)}"></div>
                 </div>

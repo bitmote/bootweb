@@ -18,12 +18,12 @@
     <script th:src="@{/admin/js/base.js}"></script>
     <script th:src="@{//cdn.bootcss.com/limonte-sweetalert2/6.4.1/sweetalert2.min.js}"></script>
 </head>
-<body>
+<body onkeydown="_key()">
 
 <div class="log">
     <div class="am-g">
         <div class="am-u-lg-3 am-u-md-6 am-u-sm-8 am-u-sm-centered log-content">
-            <h1 class="log-title am-animation-slide-top">登录</h1>
+            <h2 class="log-title am-animation-slide-top">登录</h2>
             <br>
             <form class="am-form" id="loginForm">
 
@@ -41,18 +41,15 @@
                 <br>
                 <button type="button"
                         class="am-btn am-btn-primary am-btn-block am-btn-lg am-radius am-animation-slide-bottom log-animation-delay"
-                 onclick="checkForm()">
-                    登&nbsp;录
+                        onclick="checkForm()">登&nbsp;录
                 </button>
             </form>
         </div>
     </div>
 
-    <footer class="log-footer">© 2018-5-16</footer>
 </div>
 
 <script type="text/javascript">
-    /*<![CDATA[*/
     var tale = new $.tale();
     function checkForm() {
         tale.post({
@@ -62,13 +59,19 @@
                 if (result && result.success) {
                     window.location.href = '/admin/index';
                 } else {
-                    tale.alertError(result.msg || '登录失败');
+                    alert(result.msg || '登录失败');
                 }
             }
         });
         return false;
     }
-    /*]]>*/
+
+    function _key() {
+        if(event.keyCode ==13){
+            checkForm();
+            return false;
+        }
+    }
 </script>
 </body>
 </html>
